@@ -1,0 +1,96 @@
+﻿
+@model IEnumerable<LooneyTunesDB.loonytune>
+
+@{
+    ViewBag.Title = "Looney Tunes Characters";
+}
+
+<div class="container heading-container">
+    <div class="heading"><img src="~/LooneyTunesLogo.gif" /></div>
+</div>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+    <p class="search">
+        Name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </p>
+}
+
+
+   <p class="search"> @Html.ActionLink("Add New Character", "Add", null, new { @class = "btn btn-default" })</p>
+
+<br /><br />
+  
+<div class="table-responsive">
+    <table class="table table-striped">
+
+        <tr>
+            <th class="text-center">
+
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(Model => Model.Name)
+            </th>
+
+            <th class="text-center">
+                First Appearance
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(Model => Model.Species)
+            </th>
+            <th class="text-center">
+                Ratings
+            </th>
+            <th class="text-center">
+                Rate Character
+            </th>
+
+            <th class="text-center">
+                Actions
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">
+                    <img src="@Url.Content(item.Picture)" height="100" />
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Fappearance)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Species)
+                </td>
+                <td class="text-center">
+                    <i class="glyphicon glyphicon-thumbs-up" style="color:forestgreen;"></i>
+                    @Html.DisplayFor(modelItem => item.Clike)
+                    <span style="padding : 0 10px;"></span>
+                    <i class="glyphicon glyphicon-thumbs-down" style="color:red;"></i>
+                    @Html.DisplayFor(modelItem => item.Cdislike)
+                </td>
+
+                <td class="text-center">
+                    <ul class="list-inline">
+                        @Html.ActionLink("Like", "Like", new { id = item.id }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Dislike", "Dislike", new { id = item.id }, new { @class = "btn btn-default" })
+                    </ul>
+                </td>
+                <td class="text-center">
+                    <ul class="list-inline">
+                        @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-default" })
+
+                    </ul>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

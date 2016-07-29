@@ -1,0 +1,90 @@
+﻿@model LooneyTunesDB.loonytune
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<hr />
+
+<img src="@Url.Content(Model.Picture)" height="100" />
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h5>@Html.DisplayFor(model => model.Name)</h5>
+        <hr />
+
+        @Html.HiddenFor(model => model.id)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                @Html.ValidationMessageFor(model => model.Name, null, new { @class = "text-danger col-md-6" })
+                </div>
+            </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Bio , new { @class = "form-control col-md-6", rows = 10 })
+                @Html.ValidationMessageFor(model => model.Bio,null, new {@class = "text-danger col-md-6" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">First Appearance</label>
+            <div class="col-md-10">
+               
+                @Html.EditorFor(model => model.Fappearance, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                @Html.ValidationMessageFor(model => model.Fappearance,null, new { @class = "text-danger col-md-6"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Species, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Species, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                @Html.ValidationMessageFor(model => model.Species, null, new { @class = "text-danger col-md-6" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> Picture URL</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Picture, new {htmlAttributes = new { @class = "form-control col-md-6",
+                   placeholder = "https://en.wikipedia.org/.../img.png" }})
+                @Html.ValidationMessageFor(model => model.Picture,null , new {  @class = "text-danger col-md-6"})
+            </div>
+        </div>
+        <!---------------------------------Hidden Fields ---------------------------------------->
+
+        <div style="display:none;">
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Likes</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Clike, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Dislikes</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cdislike, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+        </div>
+        <!---------------------------------END Hidden Fields ------------------------------------>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+        
+    </div>
+}
+

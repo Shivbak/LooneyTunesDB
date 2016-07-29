@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="looneytuneDBModelStoreContainer" CdmEntityContainer="looneytuneDBEntities">
+    <EntitySetMapping Name="loonytunes">
+      <EntityTypeMapping TypeName="looneytuneDBModel.loonytune">
+        <MappingFragment StoreEntitySet="loonytune">
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Bio" ColumnName="Bio" />
+          <ScalarProperty Name="Fappearance" ColumnName="Fappearance" />
+          <ScalarProperty Name="Species" ColumnName="Species" />
+          <ScalarProperty Name="Clike" ColumnName="Clike" />
+          <ScalarProperty Name="Cdislike" ColumnName="Cdislike" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
